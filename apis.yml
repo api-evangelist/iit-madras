@@ -56,6 +56,10 @@ common:
     url: finops/iit-madras-finops.yml
   - type: Review
     url: review.yml
+  - type: Blog
+    url: blogs/blogs.json
+  - type: JSONLD
+    url: json-ld/iit-madras-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

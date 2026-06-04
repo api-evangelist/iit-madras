@@ -1,0 +1,46 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "iitm": "https://www.iitm.ac.in/vocab#",
+    "@vocab": "https://www.iitm.ac.in/vocab#",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "logo": "schema:logo",
+    "sameAs": "schema:sameAs",
+    "foundingDate": "schema:foundingDate",
+    "address": "schema:address",
+    "telephone": "schema:telephone",
+    "email": "schema:email",
+    "department": "schema:department",
+    "alumni": "schema:alumni",
+    "Organization": "schema:CollegeOrUniversity",
+    "Institution": {
+      "@id": "schema:CollegeOrUniversity"
+    },
+    "api": {
+      "@id": "iitm:api",
+      "@type": "@id"
+    },
+    "humanURL": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "baseURL": {
+      "@id": "iitm:baseURL",
+      "@type": "@id"
+    },
+    "sso": "iitm:singleSignOn",
+    "oauth2": "iitm:oauth2",
+    "identity": "iitm:identity"
+  },
+  "@type": "CollegeOrUniversity",
+  "@id": "https://www.iitm.ac.in/",
+  "name": "Indian Institute of Technology Madras",
+  "url": "https://www.iitm.ac.in/",
+  "sameAs": [
+    "https://github.com/IIT-Madras",
+    "https://in.linkedin.com/school/reachiitm/"
+  ]
+}
