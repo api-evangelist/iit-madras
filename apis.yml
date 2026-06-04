@@ -1,0 +1,61 @@
+---
+aid: iit-madras
+name: Indian Institute of Technology Madras
+description: >-
+  Indian Institute of Technology Madras (IIT Madras) is a public technical and
+  research university in Chennai, India, ranked #227 in the QS World University
+  Rankings 2025. It operates an institutional website (iitm.ac.in), a central
+  library with electronic databases, a large online BS degree program in Data
+  Science and Applications, and SSO/OAuth2-based identity endpoints. As of this
+  review IIT Madras does not publish a public, documented developer portal or
+  open API program. Its official GitHub organization exists but currently
+  exposes no public repositories. The properties cataloged below reflect only
+  publicly confirmed institutional web properties and identity endpoints, not
+  documented third-party APIs.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/iit-madras/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - India
+  - IIT
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: iit-madras:sso
+    name: IIT Madras SSO / OAuth2 Identity
+    description: >-
+      IIT Madras exposes single sign-on (SSO) and OAuth2 identity endpoints
+      under iitm.ac.in for authenticating institutional users to internal web
+      properties. These are gated to institutional accounts and are not
+      documented as a public developer API; listed here as a confirmed
+      identity/authentication footprint only.
+    humanURL: https://www.iitm.ac.in/sso
+    tags: [ Identity, SSO, OAuth2, Authentication ]
+    properties:
+      - type: Documentation
+        url: https://www.iitm.ac.in/sso
+common:
+  - type: Website
+    url: https://www.iitm.ac.in/
+  - type: GitHub
+    url: https://github.com/IIT-Madras
+  - type: LinkedIn
+    url: https://in.linkedin.com/school/reachiitm/
+  - type: Plans
+    url: plans/iit-madras-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/iit-madras-rate-limits.yml
+  - type: FinOps
+    url: finops/iit-madras-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,54 @@
+---
+name: Indian Institute of Technology Madras
+description: Indian Institute of Technology Madras public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/iit-madras/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 1
+    summary: >-
+      No public, documented developer portal or open API program was found for
+      IIT Madras. The official website (iitm.ac.in), central library
+      e-databases page, the BS Data Science study portal, and a CODE portal all
+      resolved live (HTTP 200), and an SSO endpoint under iitm.ac.in resolved
+      (HTTP 200) but is gated to institutional accounts with no public docs. The
+      official GitHub organization (github.com/IIT-Madras) exists but exposes no
+      public repositories. No OAI-PMH, DSpace, or open-data API endpoints were
+      confirmed. Speculative hostnames (api.iitm.ac.in, docs.api.iitm.ac.in, a
+      separate library subdomain, idr.iitm.ac.in) did not resolve. No endpoints
+      were fabricated; only URLs actually probed are recorded below.
+    endpoints:
+      - url: https://www.iitm.ac.in/
+        status: 200
+        note: Official institutional website.
+      - url: https://www.iitm.ac.in/sso
+        status: 200
+        note: SSO landing endpoint; gated, no public API docs.
+      - url: https://code.iitm.ac.in/
+        status: 200
+        note: CODE portal (centre/online education); no documented public API.
+      - url: https://cenlib.iitm.ac.in/
+        status: 200
+        note: Central Library site.
+      - url: https://cenlib.iitm.ac.in/e-databases
+        status: 200
+        note: Library e-databases listing page; no public API.
+      - url: https://cenlib.iitm.ac.in/oai
+        status: 404
+        note: Probed for OAI-PMH endpoint; not present.
+      - url: https://study.iitm.ac.in/ds/
+        status: 200
+        note: BS in Data Science and Applications program portal.
+      - url: https://github.com/IIT-Madras
+        status: 200
+        note: Official GitHub org; no public repositories.
+      - url: https://in.linkedin.com/school/reachiitm/
+        status: 999
+        note: Official LinkedIn school page; 999 is LinkedIn anti-bot response, page is live in browser.
+      - url: https://api.iitm.ac.in/
+        status: 0
+        note: Speculative API hostname; does not resolve.
+      - url: https://idr.iitm.ac.in/
+        status: 0
+        note: Speculative institutional repository hostname; does not resolve.
