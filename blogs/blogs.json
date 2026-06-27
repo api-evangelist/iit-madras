@@ -6,9 +6,10 @@
       "feed_url": "https://www.iitm.ac.in/rss.xml",
       "title": "Indian Institute of Technology Madras - Simple Solutions for Complex Connections",
       "saved": 0,
-      "method": "none"
+      "method": "rss",
+      "note": "Feed resolves but contains only stale Drupal 'Research Areas' node entries dated 2020-06-28; no posts newer than prior fetch cutoff."
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-07T00:00:00Z"
+  "fetched": "2026-06-21T17:00:00Z"
 }
