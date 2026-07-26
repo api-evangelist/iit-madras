@@ -1,4 +1,3 @@
----
 aid: iit-madras
 name: Indian Institute of Technology Madras
 description: >-
@@ -13,9 +12,21 @@ description: >-
   publicly confirmed institutional web properties and identity endpoints, not
   documented third-party APIs.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Free
+  confidence: medium
+  source:
+    - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/iit-madras.png
 url: https://raw.githubusercontent.com/api-evangelist/iit-madras/refs/heads/main/apis.yml
 tags:
   - Education
@@ -25,22 +36,9 @@ tags:
   - India
   - IIT
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-07-25'
 specificationVersion: '0.19'
-apis:
-  - aid: iit-madras:sso
-    name: IIT Madras SSO / OAuth2 Identity
-    description: >-
-      IIT Madras exposes single sign-on (SSO) and OAuth2 identity endpoints
-      under iitm.ac.in for authenticating institutional users to internal web
-      properties. These are gated to institutional accounts and are not
-      documented as a public developer API; listed here as a confirmed
-      identity/authentication footprint only.
-    humanURL: https://www.iitm.ac.in/sso
-    tags: [ Identity, SSO, OAuth2, Authentication ]
-    properties:
-      - type: Documentation
-        url: https://www.iitm.ac.in/sso
+apis: []
 common:
   - type: DomainSecurity
     url: security/iit-madras-domain-security.yml
@@ -62,6 +60,8 @@ common:
     url: blogs/blogs.json
   - type: JSONLD
     url: json-ld/iit-madras-context.jsonld
+  - type: ProductPage
+    url: https://www.iitm.ac.in/sso
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
