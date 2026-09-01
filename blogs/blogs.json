@@ -7,9 +7,14 @@
       "title": "Indian Institute of Technology Madras - Simple Solutions for Complex Connections",
       "saved": 0,
       "method": "rss",
-      "note": "Feed resolves but contains only stale Drupal 'Research Areas' node entries dated 2020-06-28; no posts newer than prior fetch cutoff."
+      "note": "Feed resolves but contains only stale Drupal 'Research Areas' node entries dated 2020-06-28; no posts newer than prior fetch cutoff.",
+      "nature": "undetermined",
+      "nature_basis": null
     }
   ],
   "post_count": 10,
-  "fetched": "2026-08-30T22:05:13Z"
+  "fetched": "2026-08-30T22:05:13Z",
+  "feed_nature": "undetermined",
+  "feed_nature_basis": null,
+  "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
 }
