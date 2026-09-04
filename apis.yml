@@ -1,16 +1,23 @@
 aid: iit-madras
 name: Indian Institute of Technology Madras
 description: >-
-  Indian Institute of Technology Madras (IIT Madras) is a public technical and
-  research university in Chennai, India, ranked #227 in the QS World University
-  Rankings 2025. It operates an institutional website (iitm.ac.in), a central
-  library with electronic databases, a large online BS degree program in Data
-  Science and Applications, and SSO/OAuth2-based identity endpoints. As of this
-  review IIT Madras does not publish a public, documented developer portal or
-  open API program. Its official GitHub organization exists but currently
-  exposes no public repositories. The properties cataloged below reflect only
-  publicly confirmed institutional web properties and identity endpoints, not
-  documented third-party APIs.
+  Indian Institute of Technology Madras is a public institute of technology in Chennai, India,
+  founded in 1959 and consistently ranked first in India's NIRF engineering rankings. It publishes no
+  developer portal, no open data portal and no OpenAPI, AsyncAPI or other open specification of its
+  own — api.iitm.ac.in does not resolve — but it is not empty, and the June 2026 profile that
+  recorded "no APIs" missed the surfaces it does operate. Three are institution-run and machine
+  readable: a Shibboleth SAML identity provider at idp.iitm.ac.in, registered in the INFLIBNET
+  Access Management Federation (INFED) and flowing into eduGAIN since 2018; a self-hosted Moodle at
+  courses.iitm.ac.in that serves a live, unauthenticated LTI 1.3 JWKS and an LTI Advantage token
+  endpoint alongside the standard Moodle web-services REST server; and the Shoonya annotation
+  platform API run by AI4Bharat, the institute's language-AI centre, which ships a live drf-yasg
+  documentation surface over a credentialed Django REST API. IIT Madras is also a Crossref member
+  (49493, prefix 10.70002) and holds ROR 03v0r5n49. Two further surfaces are real institutional facts
+  running on someone else's platform and are recorded as tenancies, not as IIT Madras contracts: the
+  online-degree Discourse forum, which CNAMEs to iitm.hosted-by-discourse.com, and the institute's
+  IRINS research-profile instance at iitm.irins.org, operated by INFLIBNET. Everything callable here
+  is credentialed; the institute's own institutional repository host, irepose.iitm.ac.in, no longer
+  resolves at all.
 type: Index
 deliveryModel:
   model: saas
@@ -25,17 +32,18 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: free
-  onboarding: unknown
+  onboarding: institutional
   trial: false
   try_now: false
   public: false
-  label: Free
-  confidence: medium
+  label: Free · Institutional affiliation or federation membership required
+  confidence: high
   source:
+    - identity-federation
     - plans
-  generated: '2026-07-22'
-  method: derived
-position: Consumer
+  generated: '2026-09-01'
+  method: probed
+position: Consuming
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/iit-madras.png
 url: https://raw.githubusercontent.com/api-evangelist/iit-madras/refs/heads/main/apis.yml
@@ -43,22 +51,223 @@ tags:
   - Education
   - Higher Education
   - University
+  - Institute of Technology
   - Research
   - India
   - IIT
+  - Identity Federation
+  - Learning Management
+  - Artificial Intelligence
 created: '2026-06-03'
-modified: '2026-07-25'
+modified: '2026-09-01'
 specificationVersion: '0.23'
-apis: []
+apis:
+  - aid: iit-madras:idp
+    name: IIT Madras Shibboleth Identity Provider (INFED / eduGAIN)
+    description: >-
+      IIT Madras's own SAML 2.0 identity provider, entityID https://idp.iitm.ac.in/idp/shibboleth,
+      registered by INFED (the INFLIBNET Access Management Federation) and published into eduGAIN as
+      entity 672697 since 2018-11-02. The eduGAIN record carries both an IDPSSODescriptor and an
+      AttributeAuthorityDescriptor, a shibmd scope of iitm.ac.in, and ECCS status 1. The entityID
+      itself returns 403 to anonymous clients, so the authoritative machine-readable description is
+      the federation aggregate rather than a per-entity metadata URL. This is the strongest
+      institution-operated machine-readable surface in the profile and it was entirely absent from
+      the June 2026 pass.
+    humanURL: https://idp.iitm.ac.in/
+    baseURL: https://idp.iitm.ac.in/idp/
+    tags:
+      - Identity Federation
+      - SAML
+      - Shibboleth
+      - Single Sign-On
+    properties:
+      - type: IdentityFederation
+        url: identity-federation/iit-madras-identity-federation.yml
+      - type: Conformance
+        url: conformance/iit-madras-conformance.yml
+    x-operator: federation
+    x-operator-basis: >-
+      idp.iitm.ac.in resolves through waf01.iitm.ac.in to 103.158.42.45 — IIT Madras's own address
+      space, the same front end that serves www.iitm.ac.in and cenlib.iitm.ac.in — with no CNAME onto
+      a vendor identity platform. The IdP is the institution's; the federation carrying it is shared
+      by definition.
+  - aid: iit-madras:moodle-lti
+    name: IIT Madras Moodle — LTI 1.3 platform and Moodle Web Services
+    description: >-
+      The institute's self-hosted Moodle at courses.iitm.ac.in. Its LTI 1.3 public JWKS at
+      /mod/lti/certs.php returns HTTP 200 application/json with an RS256 signing key and no
+      credentials required; the LTI Advantage token endpoint at /mod/lti/token.php is live and
+      rejects unsigned requests; and the Moodle web-services REST server answers
+      core_webservice_get_site_info with a structured invalidtoken exception, i.e. the API is enabled
+      and every useful call is credentialed. No OpenAPI is published, and Moodle's own generic
+      contract belongs to Moodle — it is deliberately not saved under this institution.
+    humanURL: https://courses.iitm.ac.in/
+    baseURL: https://courses.iitm.ac.in/
+    tags:
+      - Learning Management
+      - LTI
+      - Course Catalog
+      - Moodle
+    properties:
+      - type: Authentication
+        url: authentication/iit-madras-lti-platform.yml
+      - type: CourseCatalog
+        url: https://courses.iitm.ac.in/
+      - type: Conformance
+        url: conformance/iit-madras-conformance.yml
+    x-operator: institution
+    x-operator-basis: >-
+      courses.iitm.ac.in is an IIT Madras hostname fronted by a Barracuda WAF
+      (app981586.prod.cudawaas.com) with the origin behind it. A WAF is not a tenancy — there is no
+      moodlecloud.com, Canvas or Blackboard host in the chain, and the deployment is the institute's
+      own.
+  - aid: iit-madras:shoonya
+    name: Shoonya annotation platform API (AI4Bharat, IIT Madras)
+    description: >-
+      A Django REST Framework API operated by AI4Bharat, IIT Madras's language-AI centre, behind the
+      Shoonya data-annotation platform. The API root returns a browsable JSON index of /task/,
+      /annotation/ and /prediction/; each of those returns HTTP 401
+      {"detail":"Authentication credentials were not provided."}. A drf-yasg documentation surface is
+      live at /swagger/ ("Shoonya API Docs") and /redoc, but the generated specification at
+      /swagger.json, /swagger.yaml and /swagger/?format=openapi all return HTTP 500 — the docs render
+      and the machine-readable contract does not. Recorded as an institution-operated API with no
+      retrievable specification rather than padded with one we do not have.
+    humanURL: https://backend.shoonya.ai4bharat.org/swagger/
+    baseURL: https://backend.shoonya.ai4bharat.org/
+    tags:
+      - Artificial Intelligence
+      - Data Annotation
+      - Natural Language Processing
+      - Research
+    properties:
+      - type: Documentation
+        url: https://backend.shoonya.ai4bharat.org/swagger/
+      - type: SourceCode
+        url: https://github.com/AI4Bharat/Shoonya-Backend
+    x-operator: institution
+    x-operator-basis: >-
+      AI4Bharat is a centre of IIT Madras: its canonical website is ai4bharat.iitm.ac.in, on the
+      institute's own registrable domain, and ai4bharat.org 301s to it. The service host
+      backend.shoonya.ai4bharat.org is the centre's own domain, not a vendor's shared platform, and
+      the source is published by the institute's own GitHub organisation, github.com/AI4Bharat.
+      Recorded as institution with the domain caveat stated rather than silently upgraded.
+  - aid: iit-madras:discourse
+    name: IIT Madras Online Degree community forum (Discourse tenant)
+    description: >-
+      The discussion forum for the IIT Madras BS in Data Science and Applications programme, running
+      on Discourse's hosted service. Discourse's JSON API is present at every route —
+      /site.json, /latest.json and /categories.json all return application/json — but all three
+      return HTTP 403 {"errors":["You need to be logged in to do that."]}, so the forum is a closed
+      community rather than a public read surface. /srv/status returns 200 "ok". The content and the
+      community are IIT Madras's; the contract is Discourse's and is not saved here.
+    humanURL: https://discourse.onlinedegree.iitm.ac.in/
+    baseURL: https://discourse.onlinedegree.iitm.ac.in/
+    tags:
+      - Community
+      - Forum
+      - Online Degree
+    properties:
+      - type: Website
+        url: https://discourse.onlinedegree.iitm.ac.in/
+    x-operator: tenant
+    x-operator-basis: >-
+      discourse.onlinedegree.iitm.ac.in CNAMEs to iitm.hosted-by-discourse.com (184.104.178.43) — an
+      institution-specific hostname on Discourse's managed platform. Classic tenancy.
+  - aid: iit-madras:irins
+    name: IIT Madras research profiles (IRINS tenant)
+    description: >-
+      IIT Madras's instance of IRINS, the Indian Research Information Network System operated by the
+      INFLIBNET Centre, linked from the Central Library as the institute's research-profile
+      directory. The host is live but sits behind a Cloudflare managed challenge and returns HTTP 403
+      "Just a moment..." to non-browser clients, so no ORCID or Scopus integration could be
+      dereferenced from outside. The profiles and the publication records are IIT Madras's; the
+      platform and its contract are INFLIBNET's.
+    humanURL: https://iitm.irins.org/
+    baseURL: https://iitm.irins.org/
+    tags:
+      - Research Repository
+      - CRIS
+      - Research Outputs
+    properties:
+      - type: ResearchRepository
+        url: https://iitm.irins.org/
+    x-operator: tenant
+    x-operator-basis: >-
+      iitm.irins.org is an institution-specific subdomain of irins.org, INFLIBNET's national research
+      information platform shared by hundreds of Indian institutions. Linked from
+      cenlib.iitm.ac.in.
+  - aid: iit-madras:crossref
+    name: Crossref membership (member 49493)
+    description: >-
+      IIT Madras is a Crossref member in its own right — member 49493, primary name "Indian Institute
+      of Technology Madras", location Chennai, Tamil Nadu, India, DOI prefix 10.70002, 11 current
+      DOIs as of 2026-09-01. This is a fact about the institution, recorded as a membership; the
+      Crossref REST API contract is Crossref's and is not saved here.
+    humanURL: https://www.crossref.org/
+    baseURL: https://api.crossref.org/members/49493
+    tags:
+      - Registry
+      - DOI
+      - Scholarly Metadata
+    properties:
+      - type: Registry
+        url: https://api.crossref.org/members/49493
+      - type: Conformance
+        url: conformance/iit-madras-conformance.yml
+    x-operator: registry
+    x-operator-basis: >-
+      api.crossref.org is an identifier registry IIT Madras is registered in, not a vendor platform
+      running under its name. The membership is evidenced by a dereferenceable member record.
+  - aid: iit-madras:ror
+    name: ROR registration (03v0r5n49)
+    description: >-
+      IIT Madras is registered in the Research Organization Registry as https://ror.org/03v0r5n49,
+      established 1959, domain iitm.ac.in, with cross-references to Funder ID 501100003845, GRID
+      grid.417969.4, ISNI 0000 0001 2315 1926 and Wikidata Q858662. Recorded as a registry
+      membership; the ROR API contract is ROR's.
+    humanURL: https://ror.org/03v0r5n49
+    baseURL: https://api.ror.org/organizations/03v0r5n49
+    tags:
+      - Registry
+      - Organization Identifier
+    properties:
+      - type: Registry
+        url: https://ror.org/03v0r5n49
+    x-operator: registry
+    x-operator-basis: >-
+      An identifier registry IIT Madras is registered in. Shared with every other registered
+      organisation by design, which is not misattribution.
 common:
-  - type: DomainSecurity
-    url: security/iit-madras-domain-security.yml
   - type: Website
     url: https://www.iitm.ac.in/
+  - type: IdentityFederation
+    url: identity-federation/iit-madras-identity-federation.yml
+  - type: Conformance
+    url: conformance/iit-madras-conformance.yml
+  - type: Authentication
+    url: authentication/iit-madras-lti-platform.yml
+  - type: CourseCatalog
+    url: https://courses.iitm.ac.in/
+  - type: LibraryCatalog
+    url: https://webopac.iitm.ac.in/
+  - type: ResearchRepository
+    url: https://iitm.irins.org/
+  - type: AIPolicy
+    url: https://cerai.iitm.ac.in/
+  - type: Registry
+    url: https://ror.org/03v0r5n49
+  - type: PrivacyPolicy
+    url: https://www.iitm.ac.in/privacy-policy
+  - type: Blog
+    url: https://www.iitm.ac.in/happenings/press-releases-and-coverages
   - type: GitHub
     url: https://github.com/IIT-Madras
+  - type: SourceCode
+    url: https://github.com/AI4Bharat
   - type: LinkedIn
     url: https://in.linkedin.com/school/reachiitm/
+  - type: DomainSecurity
+    url: security/iit-madras-domain-security.yml
   - type: Plans
     url: plans/iit-madras-plans-pricing.yml
   - type: RateLimits
@@ -69,8 +278,98 @@ common:
     url: review.yml
   - type: JSONLD
     url: json-ld/iit-madras-context.jsonld
-  - type: ProductPage
-    url: https://www.iitm.ac.in/sso
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-type: university
+x-category: Institute of Technology
+x-coverage:
+  state: gated
+  reason: auth_required
+  detail: >-
+    IIT Madras operates real machine-readable surfaces and publishes no contract for any of them.
+    Three are institution-run and were confirmed live on 2026-09-01: the Shibboleth SAML identity
+    provider at idp.iitm.ac.in, registered by INFED and visible in eduGAIN as entity 672697 with
+    scope iitm.ac.in; the self-hosted Moodle at courses.iitm.ac.in, whose LTI 1.3 JWKS is served
+    unauthenticated at HTTP 200 while its web-services REST server returns a structured invalidtoken
+    exception; and the AI4Bharat Shoonya API, whose /task/, /annotation/ and /prediction/ resources
+    all return HTTP 401 with a JSON detail body. The Shoonya drf-yasg docs page renders, but every
+    machine-readable form of that specification — /swagger.json, /swagger.yaml,
+    /swagger/?format=openapi — returns HTTP 500, so no contract could be harvested and none was
+    invented.
+
+    Nothing here is a vendor contract wearing an IIT Madras name. Two surfaces are genuine tenancies
+    and are recorded as relationships rather than as institute contracts: the online-degree Discourse
+    forum, which CNAMEs to iitm.hosted-by-discourse.com and returns 403 not-logged-in on every JSON
+    route, and the IRINS research-profile instance at iitm.irins.org, which is behind a Cloudflare
+    managed challenge — live-but-unreadable to a non-browser client, a limit of our probe rather than
+    a finding about the institute. Two registry memberships are facts about the institution and are
+    kept as such: Crossref member 49493 (prefix 10.70002) and ROR 03v0r5n49. DataCite returns zero
+    providers and zero repositories for IIT Madras.
+
+    The gaps are real and probed, not assumed. api.iitm.ac.in, data.iitm.ac.in, dspace.iitm.ac.in,
+    ir.iitm.ac.in and repository.iitm.ac.in do not resolve. No OAI-PMH endpoint exists:
+    cenlib.iitm.ac.in/oai and webopac.iitm.ac.in/oai/request?verb=Identify both 404, and
+    irepose.iitm.ac.in — the DSpace-CRIS "Knowledge Repository at IIT Madras" still linked from the
+    Central Library — is NXDOMAIN from IIT Madras's own authoritative nameservers, so the institute's
+    institutional repository is currently off the air. The library discovery layer at
+    webopac.iitm.ac.in is a live SirsiDynix Enterprise deployment on IIT Madras address space with no
+    RSS or OAI output. www.iitm.ac.in answers 200 for unknown paths with the site homepage, so
+    /sso, /terms-of-use, /sitemap.xml and /.well-known/security.txt are soft-404s; the previously
+    recorded ProductPage pointer to https://www.iitm.ac.in/sso has been removed for exactly that
+    reason.
+  assessed: '2026-09-01'
+  method: probed
+  evidence:
+    - url: https://technical.edugain.org/api.php?action=list_entities&format=json
+      status: 200
+    - url: https://idp.iitm.ac.in/
+      status: 200
+    - url: https://idp.iitm.ac.in/idp/shibboleth
+      status: 403
+    - url: https://courses.iitm.ac.in/mod/lti/certs.php
+      status: 200
+    - url: https://courses.iitm.ac.in/mod/lti/token.php
+      status: 400
+    - url: https://courses.iitm.ac.in/webservice/rest/server.php
+      status: 200
+    - url: https://backend.shoonya.ai4bharat.org/
+      status: 200
+    - url: https://backend.shoonya.ai4bharat.org/swagger/
+      status: 200
+    - url: https://backend.shoonya.ai4bharat.org/swagger.json
+      status: 500
+    - url: https://backend.shoonya.ai4bharat.org/task/
+      status: 401
+    - url: https://discourse.onlinedegree.iitm.ac.in/site.json
+      status: 403
+    - url: https://iitm.irins.org/
+      status: 403
+    - url: https://api.crossref.org/members/49493
+      status: 200
+    - url: https://api.ror.org/organizations?query=Indian+Institute+of+Technology+Madras
+      status: 200
+    - url: https://api.datacite.org/providers?query=Indian+Institute+of+Technology+Madras
+      status: 200
+    - url: https://webopac.iitm.ac.in/
+      status: 200
+    - url: https://ai4bharat.iitm.ac.in/
+      status: 200
+    - url: https://cerai.iitm.ac.in/
+      status: 200
+    - url: https://www.iitm.ac.in/privacy-policy
+      status: 200
+    - url: https://www.iitm.ac.in/happenings/press-releases-and-coverages
+      status: 200
+    - url: https://cenlib.iitm.ac.in/oai
+      status: 404
+    - url: https://webopac.iitm.ac.in/oai/request?verb=Identify
+      status: 404
+    - url: https://courses.iitm.ac.in/.well-known/openid-configuration
+      status: 404
+    - url: https://irepose.iitm.ac.in/
+      status: 0
+    - url: https://api.iitm.ac.in/
+      status: 0
+    - url: https://data.iitm.ac.in/
+      status: 0
