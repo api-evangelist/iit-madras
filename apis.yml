@@ -79,6 +79,11 @@ apis:
       - Identity Federation
       - SAML
       - Shibboleth
+      - SSO
+    tags_raw:
+      - Identity Federation
+      - SAML
+      - Shibboleth
       - Single Sign-On
     properties:
       - type: IdentityFederation
@@ -164,6 +169,10 @@ apis:
     baseURL: https://discourse.onlinedegree.iitm.ac.in/
     tags:
       - Community
+      - Forums
+      - Online Degree
+    tags_raw:
+      - Community
       - Forum
       - Online Degree
     properties:
@@ -185,6 +194,10 @@ apis:
     humanURL: https://iitm.irins.org/
     baseURL: https://iitm.irins.org/
     tags:
+      - Research Repository
+      - CRI
+      - Research Outputs
+    tags_raw:
       - Research Repository
       - CRIS
       - Research Outputs
