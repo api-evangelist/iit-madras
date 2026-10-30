@@ -1,4 +1,4 @@
-# Indian Institute of Technology Madras (iit-madras)
+# Indian Institute of Technology Madras
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,58 +64,115 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Indian Institute of Technology Madras (IIT Madras) is a public technical and research university in Chennai, India, ranked #227 in the QS World University Rankings 2025. This repository catalogs its publicly confirmed developer and API footprint as an APIs.json profile for the API Evangelist network.
+Indian Institute of Technology Madras is a public institute of technology in Chennai, India, founded in 1959 and consistently ranked first in India's NIRF engineering rankings. It publishes no developer portal, no open data portal and no OpenAPI, AsyncAPI or other open specification of its own — api.iitm.ac.in does not resolve — but it is not empty, and the June 2026 profile that recorded "no APIs" missed the surfaces it does operate. Three are institution-run and machine readable: a Shibboleth SAML identity provider at idp.iitm.ac.in, registered in the INFLIBNET Access Management Federation (INFED) and flowing into eduGAIN since 2018; a self-hosted Moodle at courses.iitm.ac.in that serves a live, unauthenticated LTI 1.3 JWKS and an LTI Advantage token endpoint alongside the standard Moodle web-services REST server; and the Shoonya annotation platform API run by AI4Bharat, the institute's language-AI centre, which ships a live drf-yasg documentation surface over a credentialed Django REST API. IIT Madras is also a Crossref member (49493, prefix 10.70002) and holds ROR 03v0r5n49. Two further surfaces are real institutional facts running on someone else's platform and are recorded as tenancies, not as IIT Madras contracts: the online-degree Discourse forum, which CNAMEs to iitm.hosted-by-discourse.com, and the institute's IRINS research-profile instance at iitm.irins.org, operated by INFLIBNET. Everything callable here is credentialed; the institute's own institutional repository host, irepose.iitm.ac.in, no longer resolves at all.
 
-- APIs.json: https://raw.githubusercontent.com/api-evangelist/iit-madras/refs/heads/main/apis.yml
-- Run with Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=iit-madras-api-evangelist&utm_content=repo
+**Areas:** Education · Higher Education · University · Institute of Technology · Research · India · IIT · Identity Federation · LMS · Artificial Intelligence
 
-## Type
+## Indian Institute of Technology Madras on APIs.io
 
-- Index
-- Consumer
-- 3rd-Party
+Everything profiled for Indian Institute of Technology Madras is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/iit-madras/](https://apis.io/providers/iit-madras/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-Education, Higher Education, University, Research, India, IIT
+- [IIT Madras Shibboleth Identity Provider (INFED / eduGAIN)](https://apis.io/apis/iit-madras/idp/) — IIT Madras's own SAML 2.0 identity provider, entityID https://idp.iitm.ac.in/idp/shibboleth, registered by INFED (the INFLIBNET Access Management…
+- [IIT Madras Moodle — LTI 1.3 platform and Moodle Web Services](https://apis.io/apis/iit-madras/moodle-lti/) — The institute's self-hosted Moodle at courses.iitm.ac.in. Its LTI 1.3 public JWKS at /mod/lti/certs.php returns HTTP 200 application/json with an RS256…
+- [Shoonya annotation platform API (AI4Bharat, IIT Madras)](https://apis.io/apis/iit-madras/shoonya/) — A Django REST Framework API operated by AI4Bharat, IIT Madras's language-AI centre, behind the Shoonya data-annotation platform. The API root returns a…
+- [IIT Madras Online Degree community forum (Discourse tenant)](https://apis.io/apis/iit-madras/discourse/) — The discussion forum for the IIT Madras BS in Data Science and Applications programme, running on Discourse's hosted service. Discourse's JSON API is…
+- [IIT Madras research profiles (IRINS tenant)](https://apis.io/apis/iit-madras/irins/) — IIT Madras's instance of IRINS, the Indian Research Information Network System operated by the INFLIBNET Centre, linked from the Central Library as the…
+- [Crossref membership (member 49493)](https://apis.io/apis/iit-madras/crossref/) — IIT Madras is a Crossref member in its own right — member 49493, primary name "Indian Institute of Technology Madras", location Chennai, Tamil Nadu, India,…
+- [ROR registration (03v0r5n49)](https://apis.io/apis/iit-madras/ror/) — IIT Madras is registered in the Research Organization Registry as https://ror.org/03v0r5n49, established 1959, domain iitm.ac.in, with cross-references to…
 
-## APIs
+### Published properties
 
-- **IIT Madras SSO / OAuth2 Identity** — SSO/OAuth2 identity endpoints under iitm.ac.in, gated to institutional accounts and not documented as a public developer API. Docs: https://www.iitm.ac.in/sso
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-No public, documented developer portal or open API program was found for IIT Madras at the time of review. See Notes below.
+#### JSON-LD (1)
 
-## Plans
+Linked-data contexts for the provider's vocabulary.
 
-- [plans/iit-madras-plans-pricing.yml](plans/iit-madras-plans-pricing.yml)
+- [Iit Madras Context](https://apis.io/jsonld/iit-madras/iit-madras-context/)
 
-## Rate Limits
+#### Security (1)
 
-- [rate-limits/iit-madras-rate-limits.yml](rate-limits/iit-madras-rate-limits.yml)
+Authentication, trust centre, and vulnerability disclosure.
 
-## FinOps
+- [Iit Madras Domain Security](https://apis.io/security/iit-madras/iit-madras-domain-security/)
 
-- [finops/iit-madras-finops.yml](finops/iit-madras-finops.yml)
+#### Plans and pricing (1)
 
-## Timestamps
+Published plans, tiers and prices.
 
-- Created: 2026-06-03
-- Modified: 2026-06-03
+- [Iit Madras Plans Pricing](https://apis.io/plans/iit-madras/iit-madras-plans-pricing/)
 
-## Common Properties
+#### Rate limits (1)
 
-- Website: https://www.iitm.ac.in/
-- GitHub: https://github.com/IIT-Madras
-- LinkedIn: https://in.linkedin.com/school/reachiitm/
-- Plans: plans/iit-madras-plans-pricing.yml
-- Rate Limits: rate-limits/iit-madras-rate-limits.yml
-- FinOps: finops/iit-madras-finops.yml
-- Review: review.yml
+Published request limits.
 
-## Notes
+- [Iit Madras Rate Limits](https://apis.io/rate-limits/iit-madras/iit-madras-rate-limits/)
 
-This profile records only publicly confirmed properties; no API endpoints were fabricated. The institutional website, Central Library e-databases page, BS Data Science study portal, and a CODE portal all resolved (HTTP 200). An SSO endpoint under iitm.ac.in resolved (HTTP 200) but is gated to institutional accounts with no public documentation. The official GitHub organization (github.com/IIT-Madras) exists but exposes no public repositories. Probes for OAI-PMH, DSpace, open-data, and dedicated API hostnames either returned 404 or did not resolve. See [review.yml](review.yml) for the full list of probed URLs and their HTTP statuses.
+#### FinOps (1)
 
-## Maintainers
+What the API costs to run, by operation.
 
-- Kin Lane — kin@apievangelist.com
+- [Iit Madras Finops](https://apis.io/finops/iit-madras/iit-madras-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.iitm.ac.in/)
+- [Blog](https://www.iitm.ac.in/happenings/press-releases-and-coverages)
+- [Privacy policy](https://www.iitm.ac.in/privacy-policy)
+
+## API Evangelist rating
+
+**Kin Score 19.6** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 14.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 15.8 |
+
+**Agent readiness 3.1** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 19.1** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/iit-madras/](https://apis.io/providers/iit-madras/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Indian Institute of Technology Madras: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/iit-madras/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
